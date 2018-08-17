@@ -37,8 +37,8 @@ h=0.1;      % defines the grid size of the numerical method
 
 mean_life_length=10;    % we want to have average life length of 10
 S=1-expcdf(0:h:T, mean_life_length)';   % defines the survivability function of the cells
-H=[1-0.375, 0, 0.375]';      % defines the p.g.f of the offspring: P(0 offpsring) = 3/4, P(2 offspring) = 1/4, or in other words
-% the p.g.f. is 3/4 + 0*s^1 + 1/4*s^2. 
+H=[1-0.375, 0, 0.375]';      % defines the p.g.f of the offspring: P(0 offpsring) = 0.6250, P(2 offspring) = 0.375, or in other words
+% the p.g.f. is 0.6250 + 0*s^1 + 0.375*s^2. 
 
 q_0=0.3;    % extinction probability for type 0
 u=0.2;      % mutation probability from type 1 to type 0
@@ -107,7 +107,8 @@ plot(h:h:T, -diff(Z_unif)*h, '-', 'Color', [0, 1, 0, 0.5], 'LineWidth', line_wd)
 plot(h:h:T, -diff(Z_beta)*h, '-', 'Color', [0, 0, 1, 0.5], 'LineWidth', line_wd)
 plot(h:h:T, -diff(Z_chi2)*h, '--', 'Color', [1, 0, 0, 0.5], 'LineWidth', line_wd)
 xlabel('Time'); ylabel('Probability Density Function of T');
-legend('Exponential', 'Normal', 'Uniform', 'Beta', 'ChiSquared')
-title('Changing the life length distribution')
+legend('Exp(10) life length', 'N(10, 2.5) life length', 'U(0, 20) life length', 'Beta(2,2) life length, scaled in [0, 20]', 'Chi^2(10) life length')
+title('P.D.F. of T for two-type Bellman-Harris BP')
+text(40,4e-5,'Offspring p.g.f. for type 1 is f_1(s)=0.6250 + 0.375s^2', 'FontSize', 14)
 print('./figures/Example2_fig3', '-dpng', '-r0')
 

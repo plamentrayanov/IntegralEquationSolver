@@ -55,8 +55,8 @@ hold on
 plot(0:h:T, Z_numerical_exp, 'Color', [1, 0, 0, 0.5], 'LineWidth', line_wd)
 plot(0:h:T, Z_true, '--', 'Color', [0, 0, 0, 0.5], 'LineWidth', line_wd)
 xlabel('Time'); ylabel('Expected population count');
-legend('Numerical solution', 'Theoretical Solution')
-title('Bellman-Harris BP with exponential life length Exp(10)')
+legend({'Numerical solution', 'Theoretical solution: $e^{(m-1) \lambda t}$'}, 'interpreter', 'latex')
+title('Bellman-Harris BP with Exp(10) life length')
 print('./figures/Example1_fig1', '-dpng', '-r0')
 
 % plot the expected population count fo exponentially distributed vs normally distributed life length
@@ -66,8 +66,8 @@ hold on
 plot(0:h:T, Z_numerical_exp, 'Color', [1, 0, 0, 0.5], 'LineWidth', line_wd)
 plot(0:h:T, Z_numerical_normal, '--', 'Color', [0, 0, 0, 0.5], 'LineWidth', line_wd)
 xlabel('Time'); ylabel('Expected population count');
-legend('Exponential life length', 'Normal life length')
-title('Bellman-Harris BP with mean life length of 10')
+legend('Exp(10) life length', 'N(10, 2.5) life length')
+title('Expectation of Bellman-Harris BP')
 print('./figures/Example1_fig2', '-dpng', '-r0')
 
 
