@@ -107,4 +107,16 @@ print('./figures/Example10_fig3', '-dpng', '-r0')
 
 % m_t resembles a linear function but it is not linear, as seen from the derivative
 
+%% private functions to this script
+function res=convolution(F1, F2)
+res=zeros(size(F1));
+if iscolumn(F1)
+    dF2=[diff(F2); F2(end)-F2(end-1)];
+else
+    dF2=[diff(F2), F2(end)-F2(end-1)];
+end
+for i=1:length(res)
+    res(i) = sum(F1(i:-1:1) .* dF2(1:i));
+end
+end
 
