@@ -109,6 +109,7 @@ print('./figures/Example10_fig3', '-dpng', '-r0')
 
 %% private functions to this script
 function res=convolution(F1, F2)
+% calculates the convolution of two functions presented as vectors
 res=zeros(size(F1));
 if iscolumn(F1)
     dF2=[diff(F2); F2(end)-F2(end-1)];
